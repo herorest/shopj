@@ -1,4 +1,5 @@
 com/boot/controller/HelloController.class
 com/boot/controller/passportController.class
+com/boot/config/Swagger2.class
 com/boot/controller/stuFooController.class
 com/boot/Application.class

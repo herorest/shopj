@@ -38,6 +38,20 @@ public class UserServiceImpl implements UserService {
         return result == null ? false : true;
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Users queryUserForLogin(String username, String password) {
+        Example userExample = new Example(Users.class);
+        Example.Criteria userCriteria = userExample.createCriteria();
+
+        userCriteria.andEqualTo("username", username);
+        userCriteria.andEqualTo("password", password);
+
+        Users users = usersMapper.selectOneByExample(userExample);
+
+        return users;
+    }
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Users createUser(UserBo userBO){
