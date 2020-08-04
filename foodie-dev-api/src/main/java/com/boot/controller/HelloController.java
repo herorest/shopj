@@ -1,6 +1,8 @@
 package com.boot.controller;
 
 import com.boot.utils.DateUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +15,17 @@ import java.util.Date;
 @RestController
 public class HelloController {
 
+    final static Logger logger = LoggerFactory.getLogger(HelloController.class);
+
     @GetMapping("/h")
     public Object hello(){
 
         try{
+            logger.debug("debug");
+            logger.info("info");
+            logger.error("error");
+            logger.warn("warn");
+
             String startStr = "2020.1.1 00:00:00";
             String endStr = "2020.12.31 23:59:59";
 

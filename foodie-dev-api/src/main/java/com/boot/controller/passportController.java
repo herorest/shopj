@@ -4,7 +4,9 @@ import com.boot.pojo.Users;
 import com.boot.pojo.bo.UserBo;
 import com.boot.service.StuService;
 import com.boot.service.UserService;
+import com.boot.utils.CookieUtils;
 import com.boot.utils.JSONResult;
+import com.boot.utils.JsonUtils;
 import com.boot.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +14,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 //@Controller
 @Api(value="注册登陆", tags = {"用户登陆注册的接口"})
@@ -41,7 +46,7 @@ public class passportController {
 
     @ApiOperation(value="用户注册", httpMethod = "POST")
     @PostMapping("/register")
-    public JSONResult register(@RequestBody UserBo userBo){
+    public JSONResult register(@RequestBody UserBo userBo, HttpServletRequest request, HttpServletResponse response){
         String username = userBo.getUsername();
         String password = userBo.getPassword();
         String confirmPwd = userBo.getConfirmPassword();
@@ -67,14 +72,16 @@ public class passportController {
             return new JSONResult("两次密码输入不一致", 502);
         }
 
-        userService.createUser(userBo);
+        Users userResult = userService.createUser(userBo);
+
+        CookieUtils.setCookie(request, response, "user", JsonUtils.objectToJson(userResult), true);
 
         return new JSONResult("ok");
     }
 
     @ApiOperation(value="用户登录", httpMethod = "POST")
     @PostMapping("/login")
-    public JSONResult login(@RequestBody UserBo userBo) throws Exception{
+    public JSONResult login(@RequestBody UserBo userBo, HttpServletRequest request, HttpServletResponse response) throws Exception{
         String username = userBo.getUsername();
         String password = userBo.getPassword();
 
@@ -91,7 +98,21 @@ public class passportController {
             return new JSONResult("用户名密码不正确", 503);
         }
 
+        userResult = this.setNullProperty(userResult);
+
+        CookieUtils.setCookie(request, response, "user", JsonUtils.objectToJson(userResult), true);
+
         return new JSONResult("ok");
+    }
+
+    private Users setNullProperty(Users userResult){
+        userResult.setPassword(null);
+        userResult.setSex(null);
+        userResult.setMobile(null);
+        userResult.setCreatedTime(null);
+        userResult.setUpdatedTime(null);
+        userResult.setBirthday(null);
+        return userResult;
     }
 
 }
