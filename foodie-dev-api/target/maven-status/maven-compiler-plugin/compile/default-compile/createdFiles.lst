@@ -1,6 +1,7 @@
 com/boot/config/Swagger2.class
-com/boot/controller/HelloController.class
+com/boot/controller/ItemsController.class
 com/boot/controller/passportController.class
+com/boot/controller/IndexController.class
 com/boot/aspect/ServiceLogAspect.class
 com/boot/controller/stuFooController.class
 com/boot/Application.class

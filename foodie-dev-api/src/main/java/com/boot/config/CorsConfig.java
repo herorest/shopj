@@ -1,5 +1,8 @@
 package com.boot.config;
 
+import com.boot.controller.IndexController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -9,6 +12,8 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CorsConfig {
 
+    final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+
     public CorsConfig(){
 
     }
@@ -17,7 +22,7 @@ public class CorsConfig {
     public CorsFilter corsFilter(){
         // 添加配置信息
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedOrigin("*");
 
         // 设置是否发送cookie信息
         config.setAllowCredentials(true);

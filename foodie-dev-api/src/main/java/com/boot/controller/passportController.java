@@ -2,7 +2,6 @@ package com.boot.controller;
 
 import com.boot.pojo.Users;
 import com.boot.pojo.bo.UserBo;
-import com.boot.service.StuService;
 import com.boot.service.UserService;
 import com.boot.utils.CookieUtils;
 import com.boot.utils.JSONResult;
@@ -11,8 +10,9 @@ import com.boot.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("passport")
 public class passportController {
+
+    final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private UserService userService;
@@ -37,8 +39,8 @@ public class passportController {
 
         // 查找是否存在
         boolean isExist = userService.queryUsernameIsExist(username);
-        if(!isExist){
-            return new JSONResult("用户不存在", 501);
+        if(isExist){
+            return new JSONResult("用户已存在", 501);
         }
 
         return new JSONResult("ok");
@@ -73,8 +75,8 @@ public class passportController {
         }
 
         Users userResult = userService.createUser(userBo);
-
         CookieUtils.setCookie(request, response, "user", JsonUtils.objectToJson(userResult), true);
+        logger.info(JsonUtils.objectToJson(userResult));
 
         return new JSONResult("ok");
     }
@@ -99,8 +101,15 @@ public class passportController {
         }
 
         userResult = this.setNullProperty(userResult);
-
         CookieUtils.setCookie(request, response, "user", JsonUtils.objectToJson(userResult), true);
+        return new JSONResult("ok");
+    }
+
+    @ApiOperation(value="用户登出", httpMethod = "POST")
+    @PostMapping("/logout")
+    public JSONResult logout(@RequestBody UserBo userBo, HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        CookieUtils.deleteCookie(request, response, "user");
 
         return new JSONResult("ok");
     }

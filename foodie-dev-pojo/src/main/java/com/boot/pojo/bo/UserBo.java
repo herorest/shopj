@@ -3,6 +3,9 @@ package com.boot.pojo.bo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * 与业务相关联的实体类
+ */
 @ApiModel(value = "用户对象BO")
 public class UserBo {
 
