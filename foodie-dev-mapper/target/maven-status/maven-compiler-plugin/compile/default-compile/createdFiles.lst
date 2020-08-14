@@ -4,6 +4,7 @@ com/boot/mapper/CategoryMapper.class
 com/boot/mapper/ItemsCommentsMapper.class
 com/boot/mapper/CarouselMapper.class
 com/boot/mapper/StuMapper.class
+com/boot/mapper/ItemsMapperCustom.class
 com/boot/mapper/OrderStatusMapper.class
 com/boot/mapper/CategoryMapperCustom.class
 com/boot/mapper/ItemsSpecMapper.class

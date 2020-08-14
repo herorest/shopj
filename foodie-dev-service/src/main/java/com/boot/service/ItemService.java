@@ -1,6 +1,9 @@
 package com.boot.service;
 
 import com.boot.pojo.*;
+import com.boot.pojo.vo.CommentLevelCountsVo;
+import com.boot.pojo.vo.ItemCommentVo;
+import com.boot.utils.PagedGridResult;
 
 import java.util.List;
 
@@ -34,4 +37,17 @@ public interface ItemService {
      */
     public ItemsParam queryItemParam(String itemId);
 
+    /**
+     * 根据id查询商品评价
+     * @param itemId
+     */
+    public CommentLevelCountsVo queryCommentCounts(String itemId);
+
+    /**
+     * 根据商品id查询商品评价
+     * @param itemid
+     * @param level
+     * @return
+     */
+    public PagedGridResult queryPagedComments(String itemid, Integer level, Integer page, Integer pageSize);
 }

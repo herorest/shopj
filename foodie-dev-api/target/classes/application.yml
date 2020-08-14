@@ -30,7 +30,13 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 监测mybatis sql语句
 
+#通用mapper配置
 mapper:
   mappers: com.boot.my.mapper.MyMapper
   not-empty: false
   identity: MYSQL
+
+  #分页插件
+  pagehelper:
+    helperDialect: mysql
+    supportMethodsArguments: true

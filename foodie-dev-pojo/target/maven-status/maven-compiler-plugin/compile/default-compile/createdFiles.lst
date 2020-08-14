@@ -7,10 +7,12 @@ com/boot/pojo/OrderStatus.class
 com/boot/pojo/ItemsImg.class
 com/boot/pojo/Orders.class
 com/boot/pojo/vo/SimpleItemVo.class
+com/boot/pojo/vo/CommentLevelCountsVo.class
 com/boot/pojo/ItemsComments.class
 com/boot/pojo/Users.class
 com/boot/pojo/vo/SubCategoryVo.class
 com/boot/pojo/vo/CategoryVo.class
+com/boot/pojo/vo/ItemCommentVo.class
 com/boot/pojo/vo/NewItemsVo.class
 com/boot/pojo/Items.class
 com/boot/pojo/ItemsSpec.class
