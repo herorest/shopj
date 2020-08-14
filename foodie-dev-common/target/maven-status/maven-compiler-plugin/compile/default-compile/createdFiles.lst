@@ -10,6 +10,7 @@ org/n3r/idworker/utils/Serializes.class
 com/boot/utils/DateUtil.class
 com/boot/utils/JsonUtils.class
 org/n3r/idworker/WorkerIdStrategy.class
+com/boot/utils/DesensitizationUtil.class
 org/n3r/idworker/InvalidSystemClock.class
 com/boot/utils/IMOOCJSONResult.class
 enums/Sex.class

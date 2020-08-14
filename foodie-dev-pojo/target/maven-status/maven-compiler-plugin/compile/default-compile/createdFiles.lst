@@ -11,6 +11,7 @@ com/boot/pojo/vo/CommentLevelCountsVo.class
 com/boot/pojo/ItemsComments.class
 com/boot/pojo/Users.class
 com/boot/pojo/vo/SubCategoryVo.class
+com/boot/pojo/vo/SearchItemsVo.class
 com/boot/pojo/vo/CategoryVo.class
 com/boot/pojo/vo/ItemCommentVo.class
 com/boot/pojo/vo/NewItemsVo.class

@@ -4,7 +4,9 @@ import com.boot.mapper.*;
 import com.boot.pojo.*;
 import com.boot.pojo.vo.CommentLevelCountsVo;
 import com.boot.pojo.vo.ItemCommentVo;
+import com.boot.pojo.vo.SearchItemsVo;
 import com.boot.service.ItemService;
+import com.boot.utils.DesensitizationUtil;
 import com.boot.utils.PagedGridResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -108,6 +110,9 @@ public class ItemServiceTmpl implements ItemService {
         //mybatis-pagehelper
         PageHelper.startPage(page, pageSize);
         List<ItemCommentVo> list = itemsMapperCustom.queryItemComments(map);
+        for (ItemCommentVo vo : list){
+            vo.setNickname(DesensitizationUtil.commonDisplay(vo.getNickname()));
+        }
         PagedGridResult grid = setterPagedGrid(list, page);
         return grid;
     }
@@ -119,6 +124,21 @@ public class ItemServiceTmpl implements ItemService {
         grid.setRows(list);
         grid.setTotal(pageList.getPages());
         grid.setRecords(pageList.getTotal());
+        return grid;
+    }
+
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", keywords);
+        map.put("sort", sort);
+
+        //mybatis-pagehelper
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVo> list = itemsMapperCustom.searchItems(map);
+        PagedGridResult grid = setterPagedGrid(list, page);
         return grid;
     }
 }
