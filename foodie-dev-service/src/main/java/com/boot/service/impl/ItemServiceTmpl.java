@@ -141,4 +141,17 @@ public class ItemServiceTmpl implements ItemService {
         PagedGridResult grid = setterPagedGrid(list, page);
         return grid;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public PagedGridResult searchItemsByThirdCat(Integer catId, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("catId", catId);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVo> list = itemsMapperCustom.searchItemsByThirdCat(map);
+        PagedGridResult grid = setterPagedGrid(list, page);
+        return grid;
+    }
 }

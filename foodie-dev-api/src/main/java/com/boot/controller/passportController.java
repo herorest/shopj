@@ -102,6 +102,9 @@ public class passportController {
 
         userResult = this.setNullProperty(userResult);
         CookieUtils.setCookie(request, response, "user", JsonUtils.objectToJson(userResult), true);
+
+        //TODO 生成用户token，存入redis
+        //TODO 历史购物车数据读取
         return new JSONResult("ok");
     }
 

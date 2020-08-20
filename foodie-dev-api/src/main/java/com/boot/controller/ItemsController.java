@@ -95,4 +95,26 @@ public class ItemsController extends BaseController{
         PagedGridResult grid = itemService.searchItems(keywords, sort, page, pageSize);
         return new JSONResult(grid);
     }
+
+    @ApiOperation(value = "通过分类id搜索商品列表", notes = "搜索商品列表", httpMethod = "GET")
+    @GetMapping("/catItems")
+    public JSONResult commentLevel(
+            @ApiParam(name = "catId", value = "三级分类id", required = true) @RequestParam Integer catId,
+            @ApiParam(name = "sort", value = "排序", required = false) @RequestParam String sort,
+            @ApiParam(name = "page", value = "查询下一页的第几页", required = false) @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "每页数量", required = false) @RequestParam Integer pageSize
+    ){
+        if (catId == null){
+            return new JSONResult("商品不存在", 506);
+        }
+        if(page == null){
+            page = 1;
+        }
+        if(pageSize == null){
+            pageSize = COMMENT_PAGE_SIZE;
+        }
+
+        PagedGridResult grid = itemService.searchItemsByThirdCat(catId, sort, page, pageSize);
+        return new JSONResult(grid);
+    }
 }
