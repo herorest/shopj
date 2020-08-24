@@ -22,12 +22,13 @@ public class ShopcatController {
     final static Logger logger = LoggerFactory.getLogger(ShopcatController.class);
 
     @ApiOperation(value = "添加商品到购物车", notes = "添加商品到购物车", httpMethod = "POST")
-    @GetMapping("/add")
+    @PostMapping("/add")
     public JSONResult add(@RequestParam String userId, @RequestBody ShopcartBo shopcartBo, HttpServletRequest request, HttpServletResponse response){
-//        HttpSession session = request.getSession();
-//        session.setAttribute("userInfo", "new user");
-//        session.setMaxInactiveInterval(3600);
-//        session.getAttribute("userInfo");
+
+        //        HttpSession session = request.getSession();
+        //        session.setAttribute("userInfo", "new user");
+        //        session.setMaxInactiveInterval(3600);
+        //        session.getAttribute("userInfo");
 
         if(StringUtils.isBlank(userId)){
             return new JSONResult("缺少用户", 505);
@@ -36,6 +37,22 @@ public class ShopcatController {
         logger.info(JsonUtils.objectToJson(shopcartBo));
 
         //TODO redis记录购物车
+
+        return new JSONResult("ok");
+    }
+
+    @ApiOperation(value = "删除购物车商品", notes = "删除购物车商品", httpMethod = "POST")
+    @PostMapping("/del")
+    public JSONResult del(@RequestParam String userId, @RequestBody String itemSpecId, HttpServletRequest request, HttpServletResponse response){
+        if(StringUtils.isBlank(userId)){
+            return new JSONResult("缺少用户", 505);
+        }
+
+        if(StringUtils.isBlank(itemSpecId)){
+            return new JSONResult("购物车参数不能为空", 505);
+        }
+
+        //TODO 删除redis购物车
 
         return new JSONResult("ok");
     }

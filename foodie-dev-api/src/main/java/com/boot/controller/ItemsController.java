@@ -5,6 +5,7 @@ import com.boot.pojo.ItemsParam;
 import com.boot.pojo.ItemsSpec;
 import com.boot.pojo.vo.CommentLevelCountsVo;
 import com.boot.pojo.vo.ItemInfoVo;
+import com.boot.pojo.vo.ShopcartVo;
 import com.boot.service.ItemService;
 import com.boot.utils.JSONResult;
 import com.boot.utils.PagedGridResult;
@@ -116,5 +117,20 @@ public class ItemsController extends BaseController{
 
         PagedGridResult grid = itemService.searchItemsByThirdCat(catId, sort, page, pageSize);
         return new JSONResult(grid);
+    }
+
+
+    //用于用户长时间未登录，刷新购物车中的数据（价格），类似京东
+    @ApiOperation(value = "通过商品规则ids查找最新的商品数据", notes = "搜索商品列表", httpMethod = "GET")
+    @GetMapping("/refresh")
+    public JSONResult refresh(
+            @ApiParam(name = "itemSpecIds", value = "拼接的规格ids", required = true, example = "1,2,3,4") @RequestParam String itemSpecIds
+    ){
+        if (StringUtils.isBlank(itemSpecIds)){
+            return new JSONResult("参数有误", 508);
+        }
+
+        List<ShopcartVo> list = itemService.queryItemsBySpecIds(itemSpecIds);
+        return new JSONResult(list);
     }
 }

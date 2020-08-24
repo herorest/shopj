@@ -13,6 +13,7 @@ com/boot/pojo/Users.class
 com/boot/pojo/vo/SubCategoryVo.class
 com/boot/pojo/bo/ShopcartBo.class
 com/boot/pojo/vo/SearchItemsVo.class
+com/boot/pojo/vo/ShopcartVo.class
 com/boot/pojo/vo/CategoryVo.class
 com/boot/pojo/vo/ItemCommentVo.class
 com/boot/pojo/vo/NewItemsVo.class
