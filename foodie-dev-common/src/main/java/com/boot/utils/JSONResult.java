@@ -55,6 +55,7 @@ public class JSONResult implements Serializable {
     public JSONResult(Object data) {
         state = SUCCESS;
         this.data = data;
+        this.errcode = 200;
     }
 
     public int getState() {

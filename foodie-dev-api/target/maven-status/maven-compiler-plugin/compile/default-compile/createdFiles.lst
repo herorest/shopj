@@ -1,5 +1,6 @@
 com/boot/controller/ItemsController.class
 com/boot/controller/passportController.class
+com/boot/controller/AddressController.class
 com/boot/controller/ShopcatController.class
 com/boot/config/Swagger2.class
 com/boot/controller/IndexController.class

@@ -10,6 +10,7 @@ com/boot/mapper/CategoryMapperCustom.class
 com/boot/mapper/ItemsSpecMapper.class
 com/boot/mapper/OrderItemsMapper.class
 com/boot/mapper/ItemsParamMapper.class
+com/boot/mapper/UserAddressMapper.class
 com/boot/my/mapper/MyMapper.class
 com/boot/mapper/ItemsMapper.class
 com/boot/mapper/UsersMapper.class

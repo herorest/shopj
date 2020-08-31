@@ -1,4 +1,6 @@
+com/boot/service/impl/AddressServiceTmpl.class
 com/boot/service/impl/ItemServiceTmpl.class
+com/boot/service/AddressService.class
 com/boot/service/impl/StuServiceTmpl.class
 com/boot/service/impl/CarouselServiceTmpl.class
 com/boot/service/ItemService.class

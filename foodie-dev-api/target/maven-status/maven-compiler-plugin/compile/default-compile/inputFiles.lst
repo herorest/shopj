@@ -4,6 +4,8 @@
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/BaseController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/passportController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/config/CorsConfig.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/ShopcatController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/Application.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/stuFooController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/aspect/ServiceLogAspect.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/AddressController.java

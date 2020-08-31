@@ -12,6 +12,7 @@ import com.boot.utils.PagedGridResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import enums.CommentLevel;
+import enums.YesOrNo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -155,10 +156,36 @@ public class ItemServiceTmpl implements ItemService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public List<ShopcartVo> queryItemsBySpecIds(String specIds) {
         String ids[] = specIds.split(",");
         List<String> specIdsList = new ArrayList<>();
         Collections.addAll(specIdsList, ids);
         return itemsMapperCustom.queryItemsBySpecIds(specIdsList);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public String queryItemMainImgById(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+        return result == null ? "" : result.getUrl();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public ItemsSpec queryItemSpecById(String specId) {
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void decreaseItemSpecStock(String specId, int buyCounts) {
+        int result = itemsMapperCustom.decreaseItemSpecStock(specId, buyCounts);
+        if(result != 1){
+            throw new RuntimeException("订单创建失败，库存不足");
+        }
     }
 }
