@@ -7,6 +7,8 @@ import com.boot.mapper.UserAddressMapper;
 import com.boot.pojo.*;
 import com.boot.pojo.bo.AddressBo;
 import com.boot.pojo.bo.SubmitOrderBo;
+import com.boot.pojo.vo.MerchantOrdersVo;
+import com.boot.pojo.vo.OrderVo;
 import com.boot.service.AddressService;
 import com.boot.service.ItemService;
 import com.boot.service.OrderService;
@@ -45,7 +47,7 @@ public class OrderServiceTmpl implements OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void createOrder(SubmitOrderBo submitOrderBo) {
+    public OrderVo createOrder(SubmitOrderBo submitOrderBo) {
         String userId = submitOrderBo.getUserId();
         String addressId = submitOrderBo.getAddressId();
         String itemSpecIds = submitOrderBo.getItemSpecIds();
@@ -67,6 +69,9 @@ public class OrderServiceTmpl implements OrderService {
         newOrder.setCreatedTime(new Date());
 
         UserAddress userAddress = addressService.queryUserAddress(userId, addressId);
+        if(userAddress == null){
+            return null;
+        }
         newOrder.setReceiverName(userAddress.getReceiver());
         newOrder.setReceiverMobile(userAddress.getMobile());
         newOrder.setReceiverAddress(userAddress.getProvince() + " " + userAddress.getCity() + " " + userAddress.getDistrict() + " " + userAddress.getDetail());
@@ -92,6 +97,7 @@ public class OrderServiceTmpl implements OrderService {
             subOrderItem.setOrderId(orderId);
             subOrderItem.setId(subOrderId);
             subOrderItem.setItemId(itemId);
+            subOrderItem.setItemImg(imgUrl);
             subOrderItem.setItemName(item.getItemName());
             subOrderItem.setBuyCounts(buyCounts);
             subOrderItem.setItemSpecId(itemSpecId);
@@ -113,5 +119,32 @@ public class OrderServiceTmpl implements OrderService {
         waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
         waitPayOrderStatus.setCreatedTime(new Date());
         orderStatusMapper.insert(waitPayOrderStatus);
+
+        //创建商户订单，传给支付中心
+        MerchantOrdersVo merchantOrdersVo = new MerchantOrdersVo();
+        merchantOrdersVo.setMerchantOrderId(orderId);
+        merchantOrdersVo.setMerchantUserId(userId);
+        merchantOrdersVo.setAmount(realPayAmount + postAmount);
+        merchantOrdersVo.setPayMethod(payMethod);
+
+        OrderVo orderVo = new OrderVo();
+        orderVo.setOrderId(orderId);
+        orderVo.setMerchantOrdersVo(merchantOrdersVo);
+        return orderVo;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateOrderStatus(String orderId, Integer orderStatus) {
+        OrderStatus paidStatus = new OrderStatus();
+        paidStatus.setOrderId(orderId);
+        paidStatus.setOrderStatus(orderStatus);
+        paidStatus.setPayTime(new Date());
+        orderStatusMapper.updateByPrimaryKeySelective(paidStatus);
+    }
+
+    @Override
+    public OrderStatus queryOrderStatusInfo(String orderId) {
+        return orderStatusMapper.selectByPrimaryKey(orderId);
     }
 }

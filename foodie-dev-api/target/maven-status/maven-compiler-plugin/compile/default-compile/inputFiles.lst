@@ -2,6 +2,7 @@
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/ItemsController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/config/Swagger2.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/BaseController.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/OrdersController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/passportController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/config/CorsConfig.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/ShopcatController.java
