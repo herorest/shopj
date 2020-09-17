@@ -33,6 +33,7 @@ public class CenterUserController {
         Users users = centerUserService.updateUserInfo(userId, centerUserBo);
 
         // TODO 后续修改为redis
+        // 临时处理
         users = setNullProperty(users);
         CookieUtils.setCookie(httpServletRequest, httpServletResponse, "user", JsonUtils.objectToJson(users), true);
         return new JSONResult();
