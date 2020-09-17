@@ -8,7 +8,7 @@ public class Users {
      * 用户id 唯一
      */
     @Id
-    private String userid;
+    private String id;
 
     /**
      * 用户名
@@ -67,22 +67,12 @@ public class Users {
     @Column(name = "updated_time")
     private Date updatedTime;
 
-    /**
-     * 获取用户id 唯一
-     *
-     * @return userid - 用户id 唯一
-     */
-    public String getUserid() {
-        return userid;
+    public String getId() {
+        return id;
     }
 
-    /**
-     * 设置用户id 唯一
-     *
-     * @param userid 用户id 唯一
-     */
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**

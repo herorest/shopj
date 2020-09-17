@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public Users createUser(UserBo userBO){
         String userId = sid.nextShort();
         Users user = new Users();
-        user.setUserid(userId);
+        user.setId(userId);
         user.setUsername(userBO.getUsername());
         try{
             user.setPassword(MD5Utils.getMD5Str(userBO.getPassword()));

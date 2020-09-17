@@ -12,6 +12,7 @@ import com.boot.pojo.vo.OrderVo;
 import com.boot.service.AddressService;
 import com.boot.service.ItemService;
 import com.boot.service.OrderService;
+import com.boot.utils.DateUtil;
 import enums.OrderStatusEnum;
 import enums.YesOrNo;
 import org.n3r.idworker.Sid;
@@ -144,7 +145,37 @@ public class OrderServiceTmpl implements OrderService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public OrderStatus queryOrderStatusInfo(String orderId) {
         return orderStatusMapper.selectByPrimaryKey(orderId);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void closeOrder() {
+        //查询未付款订单，判断是否超时（1天）
+        OrderStatus queryOrder = new OrderStatus();
+        queryOrder.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
+        List<OrderStatus> list = orderStatusMapper.select(queryOrder);
+        for(OrderStatus os : list){
+            //获得订单创建时间
+            Date createdTime = os.getCreatedTime();
+            //对比
+            int days = DateUtil.daysBetween(createdTime, new Date());
+            if(days >= 1){
+                //超过1天，关闭订单
+                this.doCloseOrder(os.getOrderId());
+            }
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    void doCloseOrder(String orderId){
+        OrderStatus close = new OrderStatus();
+        close.setOrderId(orderId);
+        close.setOrderStatus(OrderStatusEnum.CLOSE.type);
+        close.setCloseTime(new Date());
+        orderStatusMapper.updateByPrimaryKeySelective(close);
+    }
+
 }

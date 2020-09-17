@@ -1,5 +1,7 @@
 com/boot/service/impl/AddressServiceTmpl.class
+com/boot/service/center/CenterUserService.class
 com/boot/service/ItemService.class
+com/boot/service/impl/center/CenterUserServiceTmpl.class
 com/boot/service/impl/UserServiceImpl.class
 com/boot/service/UserService.class
 com/boot/service/impl/ItemServiceTmpl.class
