@@ -30,8 +30,20 @@ public class CenterUserServiceTmpl implements CenterUserService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Users updateUserInfo(String userId, CenterUserBo centerUserBo) {
         Users updateUser = new Users();
+        //将bo的值拷贝到users中
         BeanUtils.copyProperties(centerUserBo, updateUser);
         updateUser.setId(userId);
+        updateUser.setUpdatedTime(new Date());
+        usersMapper.updateByPrimaryKeySelective(updateUser);
+
+        return queryUserInfo(userId);
+    }
+
+    @Override
+    public Users updateUserFace(String userId, String faceUrl) {
+        Users updateUser = new Users();
+        updateUser.setId(userId);
+        updateUser.setFace(faceUrl);
         updateUser.setUpdatedTime(new Date());
         usersMapper.updateByPrimaryKeySelective(updateUser);
 

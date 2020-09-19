@@ -13,3 +13,4 @@ com/boot/service/StuService.class
 com/boot/service/OrderService.class
 com/boot/service/CarouselService.class
 com/boot/service/CategoryService.class
+com/boot/service/impl/CategoryServiceTmpl.class

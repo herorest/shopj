@@ -10,6 +10,8 @@
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/aspect/ServiceLogAspect.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/AddressController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/IndexController.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/center/CenterUserController.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/controller/BaseController.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/resource/FileUpload.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/config/CorsConfig.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-api/src/main/java/com/boot/Application.java

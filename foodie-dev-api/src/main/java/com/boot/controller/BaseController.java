@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -30,4 +31,12 @@ public class BaseController {
 
     // 支付中心的调用地址
     String paymentUrl = "http://payment.t.mukewang.com/foodie-payment/payment/createMerchantOrder";
+
+    // 头像上传地址
+//    public static final String image_user_face_url =
+//            File.separator + "Users" +
+//            File.separator +"songjing"+
+//            File.separator +"IdeaProjects" +
+//            File.separator + "h3base" +
+//            File.separator +"upload";
 }

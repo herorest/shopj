@@ -45,6 +45,7 @@ public class OrdersController extends BaseController {
         //先设成1分
         merchantOrdersVo.setAmount(1);
 
+        //发起请求
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("bootId", "boot");

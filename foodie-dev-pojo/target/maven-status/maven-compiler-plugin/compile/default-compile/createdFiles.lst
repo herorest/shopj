@@ -3,6 +3,7 @@ com/boot/pojo/bo/SubmitOrderBo.class
 com/boot/pojo/OrderItems.class
 com/boot/pojo/ItemsImg.class
 com/boot/pojo/UserAddress.class
+com/boot/pojo/bo/center/CenterUserBo.class
 com/boot/pojo/vo/CommentLevelCountsVo.class
 com/boot/pojo/ItemsComments.class
 com/boot/pojo/vo/OrderVo.class
@@ -18,6 +19,8 @@ com/boot/pojo/Stu.class
 com/boot/pojo/OrderStatus.class
 com/boot/pojo/Orders.class
 com/boot/pojo/vo/SimpleItemVo.class
+com/boot/pojo/Carousel.class
+com/boot/pojo/bo/UserBo.class
 com/boot/pojo/Users.class
 com/boot/pojo/vo/SubCategoryVo.class
 com/boot/pojo/bo/ShopcartBo.class
