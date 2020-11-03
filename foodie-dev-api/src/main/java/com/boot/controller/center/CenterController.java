@@ -21,7 +21,7 @@ public class CenterController {
     private CenterUserService centerUserService;
 
     @ApiOperation(value = "获取用户信息", notes = "获取用户信息", httpMethod = "GET")
-    @GetMapping("userInfo")
+    @GetMapping("/userInfo")
     public JSONResult userInfo(@ApiParam(name = "userId", value = "用户id", required = true) @RequestParam String userId){
         Users users = centerUserService.queryUserInfo(userId);
         return new JSONResult(users);

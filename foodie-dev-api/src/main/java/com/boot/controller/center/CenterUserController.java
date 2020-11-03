@@ -43,7 +43,7 @@ public class CenterUserController extends BaseController {
     private FileUpload fileUpload;
 
     @ApiOperation(value = "用户头像修改", notes = "用户头像修改", httpMethod = "POST")
-    @PostMapping("uploadFace")
+    @PostMapping("/uploadFace")
     public JSONResult uploadFace(
             @ApiParam(name = "userId", value = "用户id", required = true) @RequestParam String userId,
             @ApiParam(name = "file", value = "用户头像", required = true) MultipartFile file
@@ -113,7 +113,7 @@ public class CenterUserController extends BaseController {
     }
 
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息", httpMethod = "GET")
-    @PostMapping("update")
+    @PostMapping("/update")
     public JSONResult update(
             @ApiParam(name = "userId", value = "用户id", required = true) @RequestParam String userId,
             @ApiParam(name = "centerUserBo", value = "修改的数据集", required = true) @RequestBody @Valid CenterUserBo centerUserBo,

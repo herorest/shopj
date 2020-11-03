@@ -2,8 +2,10 @@ com/boot/pojo/Category.class
 com/boot/pojo/bo/SubmitOrderBo.class
 com/boot/pojo/OrderItems.class
 com/boot/pojo/ItemsImg.class
+com/boot/pojo/vo/MySubOrderItemVo.class
 com/boot/pojo/UserAddress.class
 com/boot/pojo/bo/center/CenterUserBo.class
+com/boot/pojo/vo/MyOrdersVo.class
 com/boot/pojo/vo/CommentLevelCountsVo.class
 com/boot/pojo/ItemsComments.class
 com/boot/pojo/vo/OrderVo.class

@@ -1,3 +1,4 @@
+/Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/vo/MySubOrderItemVo.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/vo/OrderVo.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/OrderStatus.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/vo/ItemCommentVo.java
@@ -17,6 +18,7 @@
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/ItemsParam.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/bo/center/CenterUserBo.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/ItemsComments.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/vo/MyOrdersVo.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/OrderItems.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/bo/UserBo.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-pojo/src/main/java/com/boot/pojo/ItemsSpec.java

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 二级分类Vo
+ * 用户中心，我的订单列表VO
  * 提供给前端展示用
  */
 public class MyOrdersVo {

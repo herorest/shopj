@@ -1,3 +1,4 @@
+/Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/center/MyOrdersService.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/center/CenterUserServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/OrderServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/CarouselServiceTmpl.java
@@ -11,6 +12,7 @@
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/ItemServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/AddressServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/UserService.java
+/Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/center/MyOrdersServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/ItemService.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/StuServiceTmpl.java
 /Users/songjing/IdeaProjects/h3base/foodie-dev-service/src/main/java/com/boot/service/impl/CategoryServiceTmpl.java
